@@ -1,4 +1,9 @@
 ---------------------BANK DATABASE-------------------------------
+BRANCH(Branch_id, Bank_name, Branch_name, Assets)
+ACCOUNT(Acc_no, Branch_id, Account_Type, Account_Balance, Customer_id) 
+CUSTOMER(Customer_id, Customer_name, Customer_age, Customer_address,
+Customer_phone) LOAN(Loan_number, Branch_id, Amount, Customer_id)
+
 
 CREATE TABLE BRANCH(
 BRANCH_ID VARCHAR(10),
