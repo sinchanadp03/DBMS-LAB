@@ -153,14 +153,16 @@ SELECT * FROM BOOK1 PARTITION(P4);
 
 
 QUERY 5: Create a view of all books and its number of copies that are currently available in the Library
-Create view available_book
-   As
-   Select b.book_id, b.title, 
-   sum(bc.no_of_copies)- (select count(*) 
-from book_lending  bl where bl.book_id= b. book_id  
-group by bl.book_id) as books_available  from book b, book_copies  bc
- where b.book_id=bc.book_id 
-group by b.book_id,b.title;
+CREATE VIEW AVAILABLE_BOOK
+AS
+SELECT B.BOOK_ID, B.TITLE, 
+   SUM(BC.NO_OF_COPIES) - (SELECT COUNT(*) 
+      FROM BOOK_LENDING BL 
+      WHERE BL.BOOK_ID = B.BOOK_ID  
+      GROUP BY BL.BOOK_ID) AS BOOKS_AVAILABLE  
+   FROM BOOK B, BOOK_COPIES BC
+   WHERE B.BOOK_ID = BC.BOOK_ID 
+   GROUP BY B.BOOK_ID, B.TITLE;
 
 
 SELECT * FROM AVAILABLE_BOOK;
